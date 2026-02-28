@@ -1,0 +1,9 @@
+.DS_Store
+*.ai
+Thumbs.db
+node_modules/
+.env
+
+# Original unoptimized images (keep only optimized ones in assets/images/)
+assets/*.jpg
+assets/*.png
