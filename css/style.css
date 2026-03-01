@@ -59,12 +59,10 @@ body {
     radial-gradient(ellipse 120% 60% at 50% 100%, rgba(90, 40, 130, 0.20) 0%, transparent 70%),
     radial-gradient(ellipse 80% 50% at 10% 20%, rgba(60, 80, 160, 0.06) 0%, transparent 60%),
     radial-gradient(ellipse 60% 40% at 90% 10%, rgba(180, 60, 100, 0.04) 0%, transparent 50%),
-    /* Dark tint over brick — more reliable than blend-mode on mobile */
-    linear-gradient(rgba(11, 9, 20, 0.82), rgba(11, 9, 20, 0.82)),
-    /* Real brick wall texture */
+    /* Brick wall texture (pre-darkened in the image itself) */
     url("../assets/images/mur-brique-bg.jpg");
-  background-size: auto, auto, auto, auto, 100% auto;
-  background-repeat: no-repeat, no-repeat, no-repeat, repeat, repeat-y;
+  background-size: auto, auto, auto, 100% auto;
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat-y;
   font-size: 1.1rem;
   line-height: 1.7;
   overflow-x: hidden;
