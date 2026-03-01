@@ -19,32 +19,6 @@
     heroObserver.observe(hero);
   }
 
-  // --- Hamburger menu ---
-  const burger = document.getElementById('nav-burger');
-  const navLinks = document.getElementById('nav-links');
-  const navCta = nav ? nav.querySelector('.nav__cta') : null;
-
-  if (burger && navLinks) {
-    burger.addEventListener('click', () => {
-      const isOpen = burger.classList.toggle('is-open');
-      burger.setAttribute('aria-expanded', isOpen);
-      navLinks.classList.toggle('is-open');
-      if (navCta) navCta.classList.toggle('is-open');
-      if (nav) nav.classList.toggle('has-menu-open', isOpen);
-    });
-
-    // Close menu when clicking a link
-    navLinks.querySelectorAll('.nav__link').forEach((link) => {
-      link.addEventListener('click', () => {
-        burger.classList.remove('is-open');
-        burger.setAttribute('aria-expanded', 'false');
-        navLinks.classList.remove('is-open');
-        if (navCta) navCta.classList.remove('is-open');
-        if (nav) nav.classList.remove('has-menu-open');
-      });
-    });
-  }
-
   // --- Intersection Observer: fade-in on scroll ---
   const fadeEls = document.querySelectorAll('.fade-in');
 
