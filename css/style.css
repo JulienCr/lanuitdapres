@@ -55,22 +55,15 @@ body {
   color: var(--text);
   background-color: var(--bg);
   background-image:
-    /* Subtle noise grain — mimics the brick wall texture feel */
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"),
-    /* Faint horizontal lines evoking brick wall joints */
-    repeating-linear-gradient(
-      to bottom,
-      transparent,
-      transparent 39px,
-      rgba(255, 255, 255, 0.04) 39px,
-      rgba(255, 255, 255, 0.04) 40px
-    ),
-    /* Deep violet ambient glow from the bottom — like the affiche */
+    /* Ambient color glows on top of the brick texture */
     radial-gradient(ellipse 120% 60% at 50% 100%, rgba(90, 40, 130, 0.20) 0%, transparent 70%),
-    /* Subtle blue wash top-left */
     radial-gradient(ellipse 80% 50% at 10% 20%, rgba(60, 80, 160, 0.06) 0%, transparent 60%),
-    /* Rose hint top-right */
-    radial-gradient(ellipse 60% 40% at 90% 10%, rgba(180, 60, 100, 0.04) 0%, transparent 50%);
+    radial-gradient(ellipse 60% 40% at 90% 10%, rgba(180, 60, 100, 0.04) 0%, transparent 50%),
+    /* Real brick wall texture */
+    url("../assets/images/mur-brique-bg.jpg");
+  background-size: auto, auto, auto, 100% auto;
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat-y;
+  background-blend-mode: normal, normal, normal, multiply;
   font-size: 1.1rem;
   line-height: 1.7;
   overflow-x: hidden;
@@ -475,6 +468,8 @@ ul { list-style: none; }
   border-left: 3px solid var(--neon-rose);
   box-shadow: -3px 0 20px rgba(232, 76, 138, 0.15);
   position: relative;
+  background: rgba(11, 9, 20, 0.75);
+  border-radius: var(--radius);
 }
 
 .spectacle__quote p {
