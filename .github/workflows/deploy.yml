@@ -30,4 +30,4 @@ jobs:
             --exclude='assets/*.md' \
             --exclude='.DS_Store' \
             -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
-            ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/lanuitdapres.com/
+            ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/my_webapp__2/www/
