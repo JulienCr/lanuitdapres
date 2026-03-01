@@ -5,6 +5,46 @@
 (function () {
   'use strict';
 
+  // --- Navigation show/hide on scroll ---
+  const nav = document.getElementById('nav');
+  const hero = document.getElementById('hero');
+
+  if (nav && hero) {
+    const heroObserver = new IntersectionObserver(
+      ([entry]) => {
+        nav.classList.toggle('is-visible', !entry.isIntersecting);
+      },
+      { threshold: 0 }
+    );
+    heroObserver.observe(hero);
+  }
+
+  // --- Hamburger menu ---
+  const burger = document.getElementById('nav-burger');
+  const navLinks = document.getElementById('nav-links');
+  const navCta = nav ? nav.querySelector('.nav__cta') : null;
+
+  if (burger && navLinks) {
+    burger.addEventListener('click', () => {
+      const isOpen = burger.classList.toggle('is-open');
+      burger.setAttribute('aria-expanded', isOpen);
+      navLinks.classList.toggle('is-open');
+      if (navCta) navCta.classList.toggle('is-open');
+      if (nav) nav.classList.toggle('has-menu-open', isOpen);
+    });
+
+    // Close menu when clicking a link
+    navLinks.querySelectorAll('.nav__link').forEach((link) => {
+      link.addEventListener('click', () => {
+        burger.classList.remove('is-open');
+        burger.setAttribute('aria-expanded', 'false');
+        navLinks.classList.remove('is-open');
+        if (navCta) navCta.classList.remove('is-open');
+        if (nav) nav.classList.remove('has-menu-open');
+      });
+    });
+  }
+
   // --- Intersection Observer: fade-in on scroll ---
   const fadeEls = document.querySelectorAll('.fade-in');
 
@@ -18,7 +58,7 @@
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.05, rootMargin: '0px 0px -30px 0px' }
     );
 
     fadeEls.forEach((el) => observer.observe(el));
@@ -26,6 +66,11 @@
     // Fallback: show everything
     fadeEls.forEach((el) => el.classList.add('is-visible'));
   }
+
+  // Safety timeout: ensure all fade-in elements are visible after 3s
+  setTimeout(() => {
+    fadeEls.forEach((el) => el.classList.add('is-visible'));
+  }, 3000);
 
   // --- Gallery scroll indicators ---
   const track = document.querySelector('.gallery__track');
