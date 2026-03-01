@@ -62,6 +62,14 @@
     );
 
     items.forEach((item) => galleryObserver.observe(item));
+
+    // Horizontal scroll with mouse wheel on desktop
+    track.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault();
+        track.scrollBy({ left: e.deltaY, behavior: 'auto' });
+      }
+    }, { passive: false });
   }
 
   // --- Smooth scroll for anchor links ---
